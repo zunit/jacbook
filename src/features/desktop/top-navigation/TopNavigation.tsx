@@ -1,8 +1,12 @@
+import { useCurrentTime } from './hooks/useCurrentTime';
+
 interface TopNavigationProps {
   onProfileClick: () => void;
 }
 
 export default function TopNavigation({ onProfileClick }: TopNavigationProps) {
+  const currentTime = useCurrentTime();
+
   return (
     <div className="fixed top-0 left-0 right-0 h-9 flex items-center justify-between px-3 sm:px-4 bg-slate-900/35 backdrop-blur-xl border-b border-white/5 text-[0.7rem] sm:text-xs">
       <div className="flex items-center gap-3">
@@ -31,7 +35,7 @@ export default function TopNavigation({ onProfileClick }: TopNavigationProps) {
       <div className="flex items-center gap-3 text-slate-200/80">
         <span className="text-[0.7rem] hidden sm:inline">🔊 ▮▮▮</span>
         <span className="text-[0.7rem] hidden sm:inline">📶 ●●●</span>
-        <span className="text-[0.7rem]">9:41 AM</span>
+        <span className="text-[0.7rem]">{currentTime}</span>
       </div>
     </div>
   );
