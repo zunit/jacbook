@@ -9,9 +9,9 @@ export type DockApp = {
 
 export const DOCK_APPS: DockApp[] = [
   {
-    id: "about",
-    label: "About",
-    emoji: "👤",
+    id: "Focus",
+    label: "Focus",
+    emoji: "🧠",
     type: "popup",
     description:
       "A quick summary of who I am as an engineer and educator, plus what I care about when building systems and courses.",
@@ -39,8 +39,8 @@ export const DOCK_APPS: DockApp[] = [
     url: "https://github.com/zunit",
   },
   {
-    id: "contact",
-    label: "Contact",
+    id: "findme",
+    label: "Find Me",
     emoji: "📡",
     type: "popup",
     description:

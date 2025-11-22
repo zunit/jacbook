@@ -1,5 +1,5 @@
 import { type ComponentType } from "react";
-import WizWork from "../features/desktop/center-canvas/widgets/wiz-work/WizWork";
+import BoardgamesWidget from "../features/desktop/center-canvas/widgets/wiz-work/BoardGames";
 // TODO: Import images from assets when available
 // import WizLearnerImage from "../assets/wiz-learner.png";
 // import WizBusinessImage from "../assets/wiz-business.png";
@@ -34,12 +34,26 @@ export type Widget =
 export const WIDGETS: Widget[] = [
   {
     id: "wiz-work",
-    name: "Wiz Work",
+    name: "Current Wiz Work ",
     type: "folder",
     folderItems: [
-      {name: "WizLearner", image: WizLearnerImage, url: "https://learn.wizrobotics.com/", description: "Learn about Our Education App Store"}, // TODO: Replace with WizLearnerImage when available
+      {name: "WizLearner", image: WizLearnerImage, url: "https://learn.wizrobotics.com/", description: "Learn about Our STEM App Store"}, // TODO: Replace with WizLearnerImage when available
       {name: "WizBusiness", image: WizBusinessImage, url: "https://partner.wizrobotics.com/", description: "Our Partner Program for Businesses"}, // TODO: Replace with WizBusinessImage when available
     ], // Array of folder items with name, image, url
     // component: WizWork, // Store the component reference, not JSX
   },
+  {
+    id: "wiz-work2",
+    name: "Fav Boardgames",
+    type: "folder",
+    folderItems: [
+      {name: "WizLearner", image: WizLearnerImage, url: "https://learn.wizrobotics.com/", description: "Learn about Our Education App Store"}, // TODO: Replace with WizLearnerImage when available
+      {name: "WizBusiness", image: WizBusinessImage, url: "https://partner.wizrobotics.com/", description: "Our Partner Program for Businesses"}, // TODO: Replace with WizBusinessImage when available
+      {name: "WizBusiness", image: WizBusinessImage, url: "https://partner.wizrobotics.com/", description: "Our Partner Program for Businesses"},
+      {name: "WizBusiness", image: WizBusinessImage, url: "https://partner.wizrobotics.com/", description: "Our Partner Program for Businesses"},
+      {name: "WizBusiness", image: WizBusinessImage, url: "https://partner.wizrobotics.com/", description: "Our Partner Program for Businesses"},
+    ], // Array of folder items with name, image, url
+    component: BoardgamesWidget,
+  },
+
 ];

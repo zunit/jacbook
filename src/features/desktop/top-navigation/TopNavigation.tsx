@@ -8,7 +8,7 @@ export default function TopNavigation({ onProfileClick }: TopNavigationProps) {
   const currentTime = useCurrentTime();
 
   return (
-    <div className="fixed top-0 left-0 right-0 h-9 flex items-center justify-between px-3 sm:px-4 bg-slate-900/35 backdrop-blur-xl border-b border-white/5 text-[0.7rem] sm:text-xs">
+    <div className="fixed top-0 left-0 right-0 h-9 flex items-center justify-between px-3 sm:px-4 bg-slate-900/60 backdrop-blur-xl border-b border-white/10 text-[0.7rem] sm:text-xs z-40">
       <div className="flex items-center gap-3">
         {/* Profile button replacing Apple logo */}
         <button
@@ -33,8 +33,20 @@ export default function TopNavigation({ onProfileClick }: TopNavigationProps) {
 
       {/* Right-side status area (fake) */}
       <div className="flex items-center gap-3 text-slate-200/80">
-        <span className="text-[0.7rem] hidden sm:inline">🔊 ▮▮▮</span>
-        <span className="text-[0.7rem] hidden sm:inline">📶 ●●●</span>
+        <button
+          onClick={() => window.open('https://www.youtube.com/watch?v=9fAZIQ-vpdw', '_blank', 'noopener,noreferrer')}
+          className="text-[0.7rem] hidden sm:inline hover:text-white transition-colors cursor-pointer"
+          aria-label="Open YouTube video"
+        >
+          🔊
+        </button>
+        <button
+          onClick={() => window.open('https://www.speedtest.net/', '_blank', 'noopener,noreferrer')}
+          className="text-[0.7rem] hidden sm:inline hover:text-white transition-colors cursor-pointer"
+          aria-label="Test internet speed"
+        >
+          📶
+        </button>
         <span className="text-[0.7rem]">{currentTime}</span>
       </div>
     </div>

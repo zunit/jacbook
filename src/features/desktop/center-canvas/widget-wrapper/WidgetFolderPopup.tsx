@@ -48,8 +48,7 @@ export default function WidgetFolderPopup({
           {...attributes}
           className="flex items-center justify-between px-4 py-2.5 border-b border-slate-700/50 bg-slate-900/50 cursor-move"
         >
-          <h3 className="text-sm font-semibold text-slate-200">{widget.name}</h3>
-          <button
+                    <button
             onClick={(e) => {
               e.stopPropagation();
               onClose();
@@ -61,6 +60,8 @@ export default function WidgetFolderPopup({
               ✕
             </span>
           </button>
+          <h3 className="text-sm font-semibold text-slate-200">{widget.name}</h3>
+
         </div>
 
         {/* Folder items */}
