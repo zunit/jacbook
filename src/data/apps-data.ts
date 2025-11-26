@@ -9,6 +9,14 @@ export type DockApp = {
 
 export const DOCK_APPS: DockApp[] = [
   {
+    id: "About Me",
+    label: "About Me",
+    emoji: "🧑‍🚀",
+    type: "popup",
+    description:
+      "My name is Jack Z and I'm an builder, software engineer and educator. Like to build things and help others build things. Explore my \"Desktop\" to learn more about me.",
+  },
+  {
     id: "Focus",
     label: "Focus",
     emoji: "🧠",

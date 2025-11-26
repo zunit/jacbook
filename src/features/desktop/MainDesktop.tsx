@@ -10,6 +10,7 @@ import CenterCanvas from './center-canvas/CenterCanvas';
 import AppWrapper from './center-canvas/app-wrapper/AppWrapper';
 import WidgetWrapper from './center-canvas/widget-wrapper/WidgetWrapper';
 import WidgetFolderPopup from './center-canvas/widget-wrapper/WidgetFolderPopup';
+import WidgetNotePopup from './center-canvas/widget-wrapper/WidgetNotePopup';
 import MobileDesktop from './MobileDesktop';
 import { useAppManager } from './hooks/useAppManager';
 import { useWidgetManager } from './hooks/useWidgetManager';
@@ -17,6 +18,7 @@ import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useDockAppHandler } from './hooks/useDockAppHandler';
 import { useMobileDetection } from './hooks/useMobileDetection';
 import { calculateAppZIndex } from './hooks/useAppManager';
+import bgVideo from '../../assets/bg-video/BG Jack Site.mp4';
 
 // A macOS-style desktop page with a top menu bar and a 5-icon dock.
 // Top-left profile button ("Me") opens a profile popup.
@@ -25,7 +27,9 @@ import { calculateAppZIndex } from './hooks/useAppManager';
 export default function MainDesktop() {
   const [profileOpen, setProfileOpen] = useState(false);
   const [openFolderIds, setOpenFolderIds] = useState<Set<string>>(new Set());
+  const [openNoteIds, setOpenNoteIds] = useState<Set<string>>(new Set());
   const [folderPopupPositions, setFolderPopupPositions] = useState<Record<string, { x: number; y: number }>>({});
+  const [notePopupPositions, setNotePopupPositions] = useState<Record<string, { x: number; y: number }>>({});
   const [maxWidgetWidth, setMaxWidgetWidth] = useState<number>(200);
   
   // Check if screen is phone/mobile size
@@ -66,6 +70,22 @@ export default function MainDesktop() {
     return folderPopupPositions[folderId] || { x: 0, y: 0 };
   };
 
+  // Note popup position management
+  const updateNotePopupPosition = (noteId: string, updater: (prev: { x: number; y: number }) => { x: number; y: number }) => {
+    setNotePopupPositions((prev) => {
+      const current = prev[noteId] || { x: 0, y: 0 };
+      const newPosition = updater(current);
+      return {
+        ...prev,
+        [noteId]: newPosition,
+      };
+    });
+  };
+
+  const getNotePopupPosition = (noteId: string): { x: number; y: number } => {
+    return notePopupPositions[noteId] || { x: 0, y: 0 };
+  };
+
   // Initialize folder popup position when opened
   useEffect(() => {
     openFolderIds.forEach((folderId) => {
@@ -78,11 +98,24 @@ export default function MainDesktop() {
     });
   }, [openFolderIds, folderPopupPositions]);
 
+  // Initialize note popup position when opened
+  useEffect(() => {
+    openNoteIds.forEach((noteId) => {
+      if (!notePopupPositions[noteId]) {
+        setNotePopupPositions((prev) => ({
+          ...prev,
+          [noteId]: { x: 0, y: 0 },
+        }));
+      }
+    });
+  }, [openNoteIds, notePopupPositions]);
+
   // Drag and drop
   const { sensor, handleDragEnd } = useDragAndDrop({
     updateAppPosition: updateAppPositionWithUpdater,
     updateWidgetPosition,
     updateFolderPopupPosition,
+    updateNotePopupPosition,
   });
 
   // Initialize widget positions on mount
@@ -165,11 +198,20 @@ export default function MainDesktop() {
     <DndContext sensors={[sensor]} onDragEnd={handleDragEnd}>
       <div className="min-h-screen w-full text-slate-50 relative overflow-hidden">
         
-      {/* Desktop background approximating macOS wallpaper */}
-      <div className="w-full absolute inset-0 -z-20 bg-[radial-gradient(circle_at_bottom,_#16a34a_0,_#15803d_30%,#052e16_55%),radial-gradient(circle_at_top,_#fb7185_0,_#fb923c_30%,#3b82f6_60%,#1e293b_90%)]" />
+      {/* Video background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover -z-20"
+        style={{ filter: 'grayscale(0.3) brightness(0.7)' }}
+      >
+        <source src={bgVideo} type="video/mp4" />
+      </video>
 
-      {/* Subtle noise/overlay */}
-      <div className="absolute inset-0 -z-10 bg-black/10" />
+      {/* Gray tint overlay */}
+      <div className="absolute inset-0 -z-10 bg-gray-900/40" />
 
       {/* Top macOS-style menu bar */}
       <TopNavigation onProfileClick={() => setProfileOpen(true)} />
@@ -228,6 +270,15 @@ export default function MainDesktop() {
               });
             }
           }}
+          onNoteClick={() => {
+            if (widget.type === "note") {
+              setOpenNoteIds((prev) => {
+                const newSet = new Set(prev);
+                newSet.add(widget.id);
+                return newSet;
+              });
+            }
+          }}
         />
       ))}
 
@@ -252,8 +303,29 @@ export default function MainDesktop() {
         );
       })}
 
-      {/* Backdrop overlay for folder popups */}
-      {openFolderIds.size > 0 && (
+      {/* Note popups - similar pattern to folder popups */}
+      {WIDGETS.filter((w) => w.type === "note").map((widget) => {
+        if (widget.type !== "note") return null;
+        return (
+          <WidgetNotePopup
+            key={widget.id}
+            isOpen={openNoteIds.has(widget.id)}
+            widget={widget}
+            onClose={() => {
+              setOpenNoteIds((prev) => {
+                const newSet = new Set(prev);
+                newSet.delete(widget.id);
+                return newSet;
+              });
+            }}
+            position={getNotePopupPosition(widget.id)}
+            zIndex={50}
+          />
+        );
+      })}
+
+      {/* Backdrop overlay for folder and note popups */}
+      {(openFolderIds.size > 0 || openNoteIds.size > 0) && (
         <div 
           className="fixed inset-0 bg-black/40 backdrop-blur-sm pointer-events-none z-30"
         />

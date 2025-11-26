@@ -65,7 +65,7 @@ export default function WidgetFolderPopup({
         </div>
 
         {/* Folder items */}
-        <div className="p-4 max-h-[500px] overflow-y-auto bg-white">
+        <div className="p-4 h-[350px] overflow-y-auto bg-white">
           <div className="grid grid-cols-2 gap-3">
             {widget.folderItems.map((item, index) => (
               <a
@@ -86,7 +86,7 @@ export default function WidgetFolderPopup({
                   {item.name}
                 </span>
                 {item.description && (
-                  <span className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-2 py-1 text-[0.65rem] text-gray-700 bg-white border border-gray-300 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10 max-w-[200px] text-center">
+                  <span className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-2 py-1 text-[0.65rem] text-gray-700 bg-white border border-gray-300 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 max-w-[300px] text-center break-words">
                     {item.description}
                   </span>
                 )}

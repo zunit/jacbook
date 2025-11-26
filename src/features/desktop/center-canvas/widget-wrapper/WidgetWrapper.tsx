@@ -7,6 +7,7 @@ interface WidgetWrapperProps {
   position: { x: number; y: number };
   zIndex?: number;
   onFolderClick?: () => void;
+  onNoteClick?: () => void;
   width?: number; // Fixed width for alignment
 }
 
@@ -16,6 +17,7 @@ export default function WidgetWrapper({
   position,
   zIndex = 20,
   onFolderClick,
+  onNoteClick,
   width,
 }: WidgetWrapperProps) {
   // Make the widget draggable
@@ -41,7 +43,13 @@ export default function WidgetWrapper({
       {widget.component ? (
         <div
           className="cursor-pointer"
-          onClick={() => widget.type === "folder" && onFolderClick?.()}
+          onClick={() => {
+            if (widget.type === "folder") {
+              onFolderClick?.();
+            } else if (widget.type === "note") {
+              onNoteClick?.();
+            }
+          }}
         >
           {(() => {
             const WidgetComponent = widget.component;
@@ -54,6 +62,13 @@ export default function WidgetWrapper({
           onClick={() => onFolderClick?.()}
         >
           <span className="text-6xl">🗂️</span>
+        </div>
+      ) : widget.type === "note" ? (
+        <div
+          className="flex items-center justify-center cursor-pointer"
+          onClick={() => onNoteClick?.()}
+        >
+          <span className="text-6xl">📝</span>
         </div>
       ) : null}
       <div

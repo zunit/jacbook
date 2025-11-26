@@ -37,22 +37,22 @@ export const WIDGETS: Widget[] = [
     name: "Current Wiz Work ",
     type: "folder",
     folderItems: [
-      {name: "WizLearner", image: WizLearnerImage, url: "https://learn.wizrobotics.com/", description: "Learn about Our STEM App Store"}, // TODO: Replace with WizLearnerImage when available
+      {name: "WizLearner", image: WizLearnerImage, url: "https://learn.wizrobotics.com/", description: "Our STEM App Store for Students, Parents, and Educators"}, // TODO: Replace with WizLearnerImage when available
       {name: "WizBusiness", image: WizBusinessImage, url: "https://partner.wizrobotics.com/", description: "Our Partner Program for Businesses"}, // TODO: Replace with WizBusinessImage when available
     ], // Array of folder items with name, image, url
     // component: WizWork, // Store the component reference, not JSX
   },
   {
-    id: "wiz-work2",
+    id: "boardgames",
     name: "Fav Boardgames",
-    type: "folder",
-    folderItems: [
-      {name: "WizLearner", image: WizLearnerImage, url: "https://learn.wizrobotics.com/", description: "Learn about Our Education App Store"}, // TODO: Replace with WizLearnerImage when available
-      {name: "WizBusiness", image: WizBusinessImage, url: "https://partner.wizrobotics.com/", description: "Our Partner Program for Businesses"}, // TODO: Replace with WizBusinessImage when available
-      {name: "WizBusiness", image: WizBusinessImage, url: "https://partner.wizrobotics.com/", description: "Our Partner Program for Businesses"},
-      {name: "WizBusiness", image: WizBusinessImage, url: "https://partner.wizrobotics.com/", description: "Our Partner Program for Businesses"},
-      {name: "WizBusiness", image: WizBusinessImage, url: "https://partner.wizrobotics.com/", description: "Our Partner Program for Businesses"},
-    ], // Array of folder items with name, image, url
+    type: "note",
+    note: [
+      "1. Ticket to Ride",
+      "2. Splendor",
+      "3. Codenames",
+      "4. Decrypto",
+      "5. Potato Pirates"
+    ],
     component: BoardgamesWidget,
   },
 

@@ -8,6 +8,7 @@ export interface UseDragAndDropProps {
   updateAppPosition: (appId: string, updater: (prev: WindowPosition) => WindowPosition) => void;
   updateWidgetPosition?: (widgetId: string, updater: (prev: WindowPosition) => WindowPosition) => void;
   updateFolderPopupPosition?: (folderId: string, updater: (prev: WindowPosition) => WindowPosition) => void;
+  updateNotePopupPosition?: (noteId: string, updater: (prev: WindowPosition) => WindowPosition) => void;
 }
 
 export interface UseDragAndDropReturn {
@@ -19,6 +20,7 @@ export function useDragAndDrop({
   updateAppPosition,
   updateWidgetPosition,
   updateFolderPopupPosition,
+  updateNotePopupPosition,
 }: UseDragAndDropProps): UseDragAndDropReturn {
   // Configure pointer sensor with activation constraint
   const sensor = useSensor(PointerSensor, {
@@ -52,6 +54,13 @@ export function useDragAndDrop({
         const folderId = id.replace('folder-popup-', '');
         // Update position by adding delta to current position
         updateFolderPopupPosition(folderId, (prev) => ({
+          x: (prev?.x || 0) + delta.x,
+          y: (prev?.y || 0) + delta.y,
+        }));
+      } else if (id.startsWith('note-popup-') && updateNotePopupPosition) {
+        const noteId = id.replace('note-popup-', '');
+        // Update position by adding delta to current position
+        updateNotePopupPosition(noteId, (prev) => ({
           x: (prev?.x || 0) + delta.x,
           y: (prev?.y || 0) + delta.y,
         }));
