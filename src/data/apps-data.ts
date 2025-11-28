@@ -17,27 +17,26 @@ export const DOCK_APPS: DockApp[] = [
       "My name is Jack Z and I'm an builder, software engineer and educator. Like to build things and help others build things. Explore my \"Desktop\" to learn more about me.",
   },
   {
-    id: "Focus",
-    label: "Focus",
-    emoji: "🧠",
-    type: "popup",
-    description:
-      "A quick summary of who I am as an engineer and educator, plus what I care about when building systems and courses.",
+    id: "Curiosities",
+    label: "Curiosities",
+    emoji: "💡",
+    type: "iframe",
+    url: "https://wizteam.notion.site/ebd/2b0c0bc03cb280a39492e5d96d5e79d9",
   },
   {
     id: "projects",
     label: "Projects",
     emoji: "🛠️",
-    type: "popup",
-    description:
-      "Highlighted work across microservices, AI-powered tools, and learning platforms—focused on impact and teaching value.",
+    type: "iframe",
+    url: "https://wizteam.notion.site/ebd/2b8c0bc03cb280338b1ffc7bea4a65b6",
+     
   },
   {
-    id: "teaching",
-    label: "Teaching",
+    id: "courses",
+    label: "courses",
     emoji: "📚",
     type: "iframe",
-    url: "https://wizteam.notion.site/ebd/2b0c0bc03cb280a39492e5d96d5e79d9",
+    url: "https://wizteam.notion.site/ebd/2b8c0bc03cb280df80f4fd0c1f2dfffc",
   },
   {
     id: "github",
