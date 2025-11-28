@@ -1,11 +1,4 @@
-type DockApp = {
-  id: string;
-  label: string;
-  emoji: string;
-  type: "popup" | "link";
-  description?: string;
-  url?: string;
-};
+import { type DockApp } from '../../../data/apps-data';
 
 interface BottomDockAppsProps {
   apps: DockApp[];
@@ -14,7 +7,7 @@ interface BottomDockAppsProps {
 
 export default function BottomDockApps({ apps, onAppClick }: BottomDockAppsProps) {
   return (
-    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 flex items-end justify-center">
+    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 flex items-end justify-center z-40">
       <div className="flex items-end gap-3 px-4 py-2 rounded-3xl bg-slate-900/70 border border-slate-800/80 shadow-[0_18px_40px_rgba(0,0,0,0.8)] backdrop-blur-xl">
         {apps.map((app) => (
           <button

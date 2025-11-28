@@ -1,3 +1,4 @@
+
 export default function CenterCanvas() {
   return (
     <div className="flex items-center justify-center min-h-screen pt-9 pb-20">
