@@ -105,6 +105,28 @@ export default function AppWrapper({
               allowFullScreen
             />
           </div>
+        ) : app.type === "component-popup" && app.component ? (
+          // Custom component for component apps
+          <div className="p-5 sm:p-6">
+            {/* App header with icon and title */}
+            <div className="flex items-center gap-3 mb-4">
+              <div className="h-10 w-10 rounded-2xl bg-slate-800 flex items-center justify-center text-2xl">
+                {app.emoji}
+              </div>
+              <div>
+                <h2 className="text-sm sm:text-base font-semibold">
+                  {app.label}
+                </h2>
+                <p className="text-[0.7rem] text-slate-400 mt-0.5">Dock app</p>
+              </div>
+            </div>
+
+            {/* Render custom component */}
+            {(() => {
+              const Component = app.component;
+              return <Component />;
+            })()}
+          </div>
         ) : (
           // Regular content for popup apps
           <div className="p-5 sm:p-6">

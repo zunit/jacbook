@@ -245,9 +245,11 @@ export default function MainDesktop() {
             position={getAppPosition(app.id)}
             zIndex={zIndex}
           >
-            <p className="text-xs sm:text-sm text-slate-200 mb-4">
-              {app.description}
-            </p>
+            {app.type === "popup" && app.description && (
+              <p className="text-xs sm:text-sm text-slate-200 mb-4">
+                {app.description}
+              </p>
+            )}
           </AppWrapper>
         );
       })}

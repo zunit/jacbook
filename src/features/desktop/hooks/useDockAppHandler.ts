@@ -19,8 +19,8 @@ export function useDockAppHandler({ openApp }: UseDockAppHandlerProps): UseDockA
       return;
     }
 
-    // Popup and iframe types open as popups
-    if (app.type === "popup" || app.type === "iframe") {
+    // Popup, iframe, and component types open as popups
+    if (app.type === "popup" || app.type === "iframe" || app.type === "component-popup") {
       openApp(appId);
     }
   };

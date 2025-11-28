@@ -38,9 +38,9 @@ export function useAppManager(): UseAppManagerReturn {
   const [openAppOrder, setOpenAppOrder] = useState<string[]>([]);
   const [appPositions, setAppPositions] = useState<Record<string, WindowPosition>>({});
 
-  // Derived: Get open apps from DOCK_APPS (popup and iframe types)
+  // Derived: Get open apps from DOCK_APPS (popup, iframe, and component-popup types)
   const openApps = useMemo(() => {
-    return DOCK_APPS.filter((app) => openAppOrder.includes(app.id) && (app.type === "popup" || app.type === "iframe"));
+    return DOCK_APPS.filter((app) => openAppOrder.includes(app.id) && (app.type === "popup" || app.type === "iframe" || app.type === "component-popup"));
   }, [openAppOrder]);
 
   // Derived: Sort openApps to match the order (most recent first)

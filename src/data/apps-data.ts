@@ -1,10 +1,14 @@
+import { type ComponentType } from "react";
+import FindMe from "../features/desktop/bottom-dock-apps/dock-apps/find-me-app/FindMe";
+
 export type DockApp = {
   id: string;
   label: string;
   emoji: string;
-  type: "popup" | "link" | "iframe";
+  type: "popup" | "link" | "iframe" | "component-popup";
   description?: string;
   url?: string;
+  component?: ComponentType;
 };
 
 export const DOCK_APPS: DockApp[] = [
@@ -33,7 +37,7 @@ export const DOCK_APPS: DockApp[] = [
   },
   {
     id: "courses",
-    label: "courses",
+    label: "Courses",
     emoji: "📚",
     type: "iframe",
     url: "https://wizteam.notion.site/ebd/2b8c0bc03cb280df80f4fd0c1f2dfffc",
@@ -49,9 +53,8 @@ export const DOCK_APPS: DockApp[] = [
     id: "findme",
     label: "Find Me",
     emoji: "📡",
-    type: "popup",
-    description:
-      "How I like to collaborate, communicate with students, and stay in touch about projects and opportunities.",
+    type: "component-popup",
+    component: FindMe,
   },
 ];
 
