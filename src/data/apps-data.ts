@@ -24,24 +24,24 @@ export const DOCK_APPS: DockApp[] = [
     id: "Curiosities",
     label: "Curiosities",
     emoji: "💡",
-    type: "iframe",
-    url: "https://wizteam.notion.site/ebd//2b0c0bc03cb280a39492e5d96d5e79d9",
+    type: "link",
+    url: "https://wizteam.notion.site/Curiosities-2b0c0bc03cb280a39492e5d96d5e79d9",
     
   },
   {
     id: "projects",
     label: "Projects",
     emoji: "🛠️",
-    type: "iframe",
-    url: "https://wizteam.notion.site/ebd/2b8c0bc03cb280338b1ffc7bea4a65b6",
+    type: "link",
+    url: "https://www.notion.so/wizteam/Projects-2b8c0bc03cb280338b1ffc7bea4a65b6",
      
   },
   {
     id: "courses",
     label: "Courses",
     emoji: "📚",
-    type: "iframe",
-    url: "https://wizteam.notion.site/ebd/2b8c0bc03cb280df80f4fd0c1f2dfffc",
+    type: "link",
+    url: "https://www.notion.so/wizteam/Courses-2b8c0bc03cb280df80f4fd0c1f2dfffc",
   },
   {
     id: "github",
