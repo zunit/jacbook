@@ -25,7 +25,7 @@ export const DOCK_APPS: DockApp[] = [
     label: "Curiosities",
     emoji: "💡",
     type: "iframe",
-    url: "https://wizteam.notion.site/ebd/2b0c0bc03cb280a39492e5d96d5e79d9",
+    url: "https://wizteam.notion.site/Curiosities-2b0c0bc03cb280a39492e5d96d5e79d9?pvs=143",
   },
   {
     id: "projects",
