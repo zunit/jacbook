@@ -5,6 +5,10 @@ import BoardgamesWidget from "../features/desktop/center-canvas/widgets/wiz-work
 // import WizBusinessImage from "../assets/wiz-business.png";
 import WizLearnerImage from "../assets/wiz-work/wizlearner.png";
 import WizBusinessImage from "../assets/wiz-work/wizpartner.png";
+// TODO: Replace with dedicated project artwork when available
+import GitSimInage from "../assets/fun-proj/git.png";
+import VimSimInage from "../assets/fun-proj/vim.png";
+
 
 export type FolderItem = {
   name: string;
@@ -41,6 +45,15 @@ export const WIDGETS: Widget[] = [
       {name: "WizBusiness", image: WizBusinessImage, url: "https://partner.wizrobotics.com/", description: "Our Partner Program for Businesses"}, // TODO: Replace with WizBusinessImage when available
     ], // Array of folder items with name, image, url
     // component: WizWork, // Store the component reference, not JSX
+  },
+  {
+    id: "fun-small-project",
+    name: "Fun Small Project",
+    type: "folder",
+    folderItems: [
+      {name: "JacVimDojo", image: GitSimInage, url: "https://zunit.github.io/vim-simulator/", description: "Placeholder"},
+      {name: "JacGitDojo", image: VimSimInage, url: "https://zunit.github.io/git-simulator/", description: "Placeholder"},
+    ],
   },
   {
     id: "boardgames",
