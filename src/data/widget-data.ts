@@ -51,8 +51,8 @@ export const WIDGETS: Widget[] = [
     name: "Fun Small Project",
     type: "folder",
     folderItems: [
-      {name: "JacVimDojo", image: GitSimInage, url: "https://zunit.github.io/vim-simulator/", description: "Placeholder"},
-      {name: "JacGitDojo", image: VimSimInage, url: "https://zunit.github.io/git-simulator/", description: "Placeholder"},
+      {name: "JacVimDojo", image: GitSimInage, url: "https://zunit.github.io/vim-simulator/", description: "Project to practice vim."},
+      {name: "JacGitDojo", image: VimSimInage, url: "https://zunit.github.io/git-simulator/", description: "Practice Git"},
     ],
   },
   {
