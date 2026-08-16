@@ -62,7 +62,7 @@ export default function TopNavigation({ onProfileClick }: TopNavigationProps) {
           onClick={onProfileClick}
           className="flex items-center gap-1.5 rounded-full px-2.5 py-1 hover:bg-slate-800/60 active:bg-slate-900/70 transition-colors"
         >
-          <span className="text-sm">👤</span>
+          <span className="text-sm">🧑‍🚀</span>
           <span className="font-medium">Me</span>
         </button>
 
